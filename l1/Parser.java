@@ -29,6 +29,8 @@ public class Parser {
 				elems.add(new Atom("cpclose"));
 			} else if (c == ' ') {
 				elems.add(new Atom("cspace"));
+			} else if (c == '\'') {
+				elems.add(new Atom("csquote"));
 			} else if (c == '\\') {
 				c = next();
 				if (c == 'n') {
@@ -37,8 +39,8 @@ public class Parser {
 					elems.add(new Atom("ctab"));
 				} else if (c == '"') {
 					elems.add(new Atom("cdquote"));
-				} else if (c == '\'') {
-					elems.add(new Atom("csquote"));
+				} else if (c == '\\') {
+					elems.add(new Atom("cbackslash"));
 				} else {
 					throw new L1Exception("Unknown escape sequence: \\" + c);
 				}
