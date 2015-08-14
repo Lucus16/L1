@@ -21,6 +21,6 @@ public class BuiltinLet extends Func {
 			newEnv.put(let.get(0).asAtom(), let.get(1).eval(newEnv));
 			lets = cons.getCdr();
 		}
-		return body.evalLater(env);
+		return body.evalLater(newEnv);
 	}
 }

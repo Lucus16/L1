@@ -18,7 +18,7 @@ public class Unfinished extends InternalObj {
 		Object o = this;
 		while (o instanceof Unfinished) {
 			Unfinished u = (Unfinished)o;
-			o = env.evalStep(u.code);
+			o = u.env.evalStep(u.code);
 		}
 		return (Obj)o;
 	}

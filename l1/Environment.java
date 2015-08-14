@@ -30,6 +30,7 @@ public class Environment {
 		put("isfunc", new BuiltinIsFunc());
 		put("quote", new BuiltinQuote());
 		put("let", new BuiltinLet());
+		put("lambda", new BuiltinLambda());
 		put(Atom.t, Atom.t);
 		put(Atom.f, Atom.f);
 		put(Cons.nil, Cons.nil);

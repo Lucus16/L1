@@ -15,13 +15,15 @@ public abstract class Func extends Obj {
 		int total = count;
 		while (count > 0) {
 			if (!(arg instanceof Cons)) {
-				throw new L1Exception("Too few arguments, missing: " + count);
+				throw new L1Exception("Too few arguments, expected " + total +
+						", got " + (total - count) + ".");
 			}
 			arg = ((Cons)arg).getCdr();
 			count -= 1;
 		}
 		if (arg instanceof Cons) {
-			throw new L1Exception("Too many arguments, expected: " + total);
+			throw new L1Exception("Too many arguments, expected " + total +
+					", got " + total + arg.listLength() + ".");
 		}
 	}
 }

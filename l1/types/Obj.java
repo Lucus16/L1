@@ -56,4 +56,18 @@ public abstract class Obj extends InternalObj {
 		}
 		return list;
 	}
+
+	public int listLength() throws L1Exception{
+		int length = 0;
+		Obj o = this;
+		while (o instanceof Cons) {
+			Cons cons = (Cons)o;
+			length++;
+			o = cons.getCdr();
+		}
+		if (!Cons.nil.equals(o)) {
+			throw new L1Exception("Improper list.");
+		}
+		return length;
+	}
 }

@@ -4,7 +4,11 @@ import l1.types.Obj;
 
 public class Main {
 	public static void main(String[] args) {
-		String source = "(car '(blah))";
+		String source = "(let ("
+				+ "(twice (lambda (f) (lambda (x) (f (f x)))))"
+				+ "(many (((twice (twice (twice (twice twice)))) (lambda (x) (cons true x))) nil))"
+				+ "(and (lambda (x) (if (isatom x) true (if (eq (car x) true) (and (cdr x)) false)))))"
+				+ "(and many))";
 		Obj parsed;
 		try {
 			parsed = new Parser(source).parse();
